@@ -1,16 +1,50 @@
+import style from './style'
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ListView } from 'react-native'
+import { NavigationActions } from 'react-navigation'
+
+import Layout from '../../auto/layout'
+import DailyItem from '../../components/dailyItem'
 
 class Index extends Component {
 	constructor(props) {
 		super(props)
 	}
 
+	itemClick = e => {
+		const { dispatch } = this.props.navigation
+		const action = NavigationActions.navigate({
+			routeName: 'HomePage',
+			params: {}
+		})
+
+		dispatch(action)
+	}
+
 	render() {
+		const ds = new ListView.DataSource({
+			rowHasChanged: (r1, r2) => true
+		})
+		const dataSource = ds.cloneWithRows([1,2,3,4,5,6,7,8,9,0])
+
 		return (
-			<View>
-				<Text>index</Text>
-			</View>
+			<Layout>
+				
+				<Layout.Header hasShadow title="全部" />
+
+				<Layout.Body style={{padding: 0, backgroundColor: '#7076EF'}}>
+					
+					<ListView
+						style={{padding: 10}}
+						initialListSize={10}
+						dataSource={dataSource}
+						renderRow={e => <DailyItem onPress={this.itemClick} />}/>
+					
+				</Layout.Body>
+
+				<Layout.Footer hasShadow />
+
+			</Layout>
 		)
 	}
 }

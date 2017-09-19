@@ -5,11 +5,11 @@ const style = StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		alignItems: 'center',
-		paddingTop: 20,
+		paddingTop: px2pt(10),
 	},
 	box: {
 		width: '100%',
-		padding: 10,
+		padding: px2pt(20),
 		shadowOffset: {
 			width: 0,
 			height: px2pt(2),
