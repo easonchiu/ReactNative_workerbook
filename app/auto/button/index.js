@@ -1,6 +1,6 @@
 import style, { hover } from './style'
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, ImageBackground } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
 
 
 class Btn extends Component {
@@ -28,16 +28,11 @@ class Btn extends Component {
 		return (
 			<TouchableOpacity
 				style={[style.wrapper, this.props.style]}
-				activeOpacity={1}
+				activeOpacity={0.9}
 				onPressIn={this.onPressIn}
 				onPressOut={this.onPressOut}
-				onPress={this.props.onClick}>
-				<ImageBackground
-					source={{uri: 'bg-button-primary'}}
-					style={style.bg}
-					resizeMode="cover">
-					<Text style={style.text}>{this.props.children}</Text>
-				</ImageBackground>
+				onPress={this.props.onPress}>
+				<Text style={style.text}>{this.props.children}</Text>
 			</TouchableOpacity>
 		)
 	}

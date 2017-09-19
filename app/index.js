@@ -5,16 +5,24 @@ import { Provider } from 'react-redux'
 import createConfStore from './store/conf'
 
 import Index from './views/index'
+import Login from './views/login'
+import HomePage from './views/homepage'
 
 
 const App = StackNavigator({
 	Index: {
 		screen: Index
+	},
+	Login: {
+		screen: Login
+	},
+	HomePage: {
+		screen: HomePage
 	}
 }, {
 	headerMode: 'none',
 	mode: 'modal',
-	initialRouteName: 'Index',
+	initialRouteName: 'Login',
 	cardStyle: {
 		shadowColor: '#000',
 		shadowOpacity: 0.01,
