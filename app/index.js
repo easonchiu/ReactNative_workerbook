@@ -21,7 +21,6 @@ const App = StackNavigator({
 	}
 }, {
 	headerMode: 'none',
-	mode: 'modal',
 	initialRouteName: 'Index',
 	cardStyle: {
 		shadowColor: '#000',

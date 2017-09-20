@@ -46,6 +46,11 @@ const style = StyleSheet.create({
 		fontSize: px2pt(12),
 		color: '#8a929b',
 	},
+	mydate: {
+		lineHeight: px2pt(20),
+		fontSize: px2pt(13),
+		color: '#8a929b',
+	},
 	progress: {
 		color: '#8a929b',
 		fontSize: px2pt(10),

@@ -4,17 +4,23 @@ import { px2pt, pt1 } from '../../utils/size'
 const style = StyleSheet.create({
 	wrapper: {
 		padding: 0,
-		paddingTop: 100
+		backgroundColor: 'rgb(246,150,59)',
 	},
-	grid: {
-		flexDirection: 'row'
+	title: {
+		alignItems: 'center'
 	},
-	gridCol: {
-
+	titleName: {
+		fontSize: px2pt(16),
+        fontWeight: 'bold',
+        color: 'rgb(246,150,59)',
+        height: px2pt(20),
+        marginBottom: px2pt(3),
 	},
-	gridItem: {
-		borderWidth: pt1,
-		borderColor: '#fff'
+	titleGroup: {
+		fontSize: px2pt(13),
+        fontWeight: 'bold',
+        color: '#8a929b',
+        height: px2pt(20),
 	}
 })
 

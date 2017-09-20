@@ -15,6 +15,7 @@ class Index extends Component {
 		const { dispatch } = this.props.navigation
 		const action = NavigationActions.navigate({
 			routeName: 'HomePage',
+			mode: 'modal',
 			params: {}
 		})
 
@@ -32,13 +33,13 @@ class Index extends Component {
 				
 				<Layout.Header hasShadow title="全部" />
 
-				<Layout.Body style={{padding: 0, backgroundColor: '#7076EF'}}>
+				<Layout.Body style={style.body}>
 					
 					<ListView
 						style={{padding: 10}}
 						initialListSize={10}
 						dataSource={dataSource}
-						renderRow={e => <DailyItem onPress={this.itemClick} />}/>
+						renderRow={e => <DailyItem onUserPress={this.itemClick} />}/>
 					
 				</Layout.Body>
 
