@@ -17,7 +17,7 @@ const style = StyleSheet.create({
 	},
 	inputGroup: {
 		borderWidth: pt1,
-		borderColor: '#dee3e8',
+		borderColor: '#e4e8ed',
 		borderRadius: px2pt(4),
 		marginBottom: px2pt(20),
 		width: '100%',
@@ -26,7 +26,7 @@ const style = StyleSheet.create({
 	inputItem: {
 		height: px2pt(50),
 		borderTopWidth: pt1,
-		borderColor: '#dee3e8',
+		borderColor: '#e4e8ed',
 		alignItems: 'center',
 		justifyContent: 'center',
 		paddingLeft: px2pt(15),

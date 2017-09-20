@@ -46,14 +46,42 @@ const style = StyleSheet.create({
 		fontSize: px2pt(12),
 		color: '#8a929b',
 	},
-	records: {
-		padding: px2pt(15),
-		backgroundColor: '#f7f9fc',
+	progress: {
+		color: '#8a929b',
+		fontSize: px2pt(10),
+		lineHeight: px2pt(13 * 1.5),
+		position: 'relative',
+		zIndex: 2,
+		backgroundColor: 'transparent',
+	},
+	progressBar: {
+		position: 'absolute',
+		left: 0,
+		top: 0,
+		bottom: 0,
+		right: 0,
+	},
+	progressBarContent: {
+		backgroundColor: '#f0f4f9',
+		height: '100%',
+		width: '50%',
 	},
 	record: {
+		padding: px2pt(10),
+		backgroundColor: '#fff',
+		borderTopWidth: pt1,
+		borderTopColor: '#fff',
+		flexDirection: 'row',
+		position: 'relative',
+	},
+	recordText: {
+		flex: 1,
 		color: '#586069',
 		fontSize: px2pt(13),
 		lineHeight: px2pt(13 * 1.5),
+		position: 'relative',
+		zIndex: 2,
+		backgroundColor: 'transparent',
 	}
 })
 

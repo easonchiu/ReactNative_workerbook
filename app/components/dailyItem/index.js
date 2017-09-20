@@ -9,7 +9,7 @@ class DailyItem extends Component {
 
 	render() {
 		return (
-			<TouchableOpacity activeOpacity={0.8} style={style.wrapper} onPress={this.props.onPress}>
+			<View style={style.wrapper} onPress={this.props.onPress}>
 				<View style={style.info}>
 					<View style={style.header}>
 						<Text style={style.headerName}>志达</Text>
@@ -20,11 +20,34 @@ class DailyItem extends Component {
 					</View>
 					<Text style={style.date}>更新于 22:31:32</Text>
 				</View>
-				<View style={style.records}>
-					<Text style={style.record}>APP首页日志解析</Text>
-					<Text style={style.record}>销售业绩短租报表长租报表页面优化调整及权限调整</Text>
+				<View style={style.record}>
+					<Text style={style.recordText}>APP首页日志解析</Text>
+					<Text style={style.progress}>30%</Text>
+					<View style={style.progressBar}>
+						<View style={[style.progressBarContent, {
+							width: '30%'
+						}]} />
+					</View>
 				</View>
-			</TouchableOpacity>
+				<View style={style.record}>
+					<Text style={style.recordText}>APP首页日志解析</Text>
+					<Text style={style.progress}>75%</Text>
+					<View style={style.progressBar}>
+						<View style={[style.progressBarContent, {
+							width: '75%'
+						}]} />
+					</View>
+				</View>
+				<View style={style.record}>
+					<Text style={style.recordText}>APP首页日志解析</Text>
+					<Text style={style.progress}>已完成</Text>
+					<View style={style.progressBar}>
+						<View style={[style.progressBarContent, {
+							width: '100%'
+						}]} />
+					</View>
+				</View>
+			</View>
 		)
 	}
 }

@@ -22,7 +22,7 @@ const App = StackNavigator({
 }, {
 	headerMode: 'none',
 	mode: 'modal',
-	initialRouteName: 'Login',
+	initialRouteName: 'Index',
 	cardStyle: {
 		shadowColor: '#000',
 		shadowOpacity: 0.01,
