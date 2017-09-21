@@ -13,12 +13,23 @@ class Index extends Component {
 		super(props)
 
 		this.state = {
-			
+			animation: 'none',
+			loginVisible: true
 		}
 	}
 
 	itemClick = e => {
 		this.props.navigation.navigate('HomePage')
+	}
+
+	loginSuccess = e => {
+		this.setState({
+			animation: 'slide'
+		}, e => {
+			this.setState({
+				loginVisible: false
+			})
+		})
 	}
 
 	render() {
@@ -48,8 +59,10 @@ class Index extends Component {
 					<Image style={style.footerAdd} source={{uri: 'icon-footer-add'}} />
 				</Layout.Footer>
 
-				<Modal>
-					<Login />
+				<Modal
+					animationType={this.state.animation}
+					visible={this.state.loginVisible}>
+					<Login onLoginSuccess={this.loginSuccess} />
 				</Modal>
 
 			</Layout>
