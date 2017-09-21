@@ -12,6 +12,10 @@ class HomePage extends Component {
 		super(props)
 	}
 
+	onBackClick = e => {
+		this.props.navigation.goBack()
+	}
+
 	render() {
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => true
@@ -21,7 +25,7 @@ class HomePage extends Component {
 		return (
 			<Layout>
 
-				<Layout.Header style={style.header} onBack={e => {}}>
+				<Layout.Header style={style.header} onBack={this.onBackClick}>
 					<View style={style.title}>
 						<Text style={style.titleName}>Eason.Chiu</Text>
 						<Text style={style.titleGroup}>前端开发</Text>

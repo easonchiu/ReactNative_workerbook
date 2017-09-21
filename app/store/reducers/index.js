@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
 
-import $$portfolio from './portfolio'
+import $$user from './user'
 
 const reducers = {
-	$$portfolio,
+	$$user,
 }
 
 export default combineReducers({

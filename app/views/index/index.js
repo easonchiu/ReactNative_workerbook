@@ -1,11 +1,12 @@
 import style from './style'
 import React, { Component } from 'react'
-import { View, Text, ListView, StatusBar } from 'react-native'
+import { View, Text, ListView, StatusBar, Image, Modal } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 import { px2pt, ww, wh } from '../../utils/size'
 
 import Layout from '../../auto/layout'
 import DailyItem from '../../components/dailyItem'
+import Login from '../login'
 
 class Index extends Component {
 	constructor(props) {
@@ -24,7 +25,7 @@ class Index extends Component {
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => true
 		})
-		const dataSource = ds.cloneWithRows([1,2,3,4,5,6,7,8,9,0])
+		const dataSource = ds.cloneWithRows([0])
 
 		return (
 			<Layout>
@@ -42,6 +43,14 @@ class Index extends Component {
 						renderRow={e => <DailyItem onUserPress={this.itemClick} />}/>
 					
 				</Layout.Body>
+
+				<Layout.Footer style={style.footer}>
+					<Image style={style.footerAdd} source={{uri: 'icon-footer-add'}} />
+				</Layout.Footer>
+
+				<Modal>
+					<Login />
+				</Modal>
 
 			</Layout>
 		)

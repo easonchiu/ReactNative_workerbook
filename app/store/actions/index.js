@@ -1,5 +1,5 @@
-import $portfolio from './portfolio'
+import $user from './user'
 
 export default {
-	$portfolio
+	$user
 }

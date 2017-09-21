@@ -1,6 +1,7 @@
 import style from './style'
 import React, { Component } from 'react'
 import { NavigationActions } from 'react-navigation'
+import connect from '../../store/connect'
 
 import { View, Text, Image, TextInput } from 'react-native'
 
@@ -15,30 +16,47 @@ class Login extends Component {
 		this.state = {
 			toast: false,
 			toastMessage: '',
-			username: ''
+			username: '',
+			password: '',
 		}
 	}
 
-	submit = e => {
+	componentDidMount() {
+	}
+
+	submit = async e => {
 		if (this.state.username == '') {
 			this.setState({
 				toast: true,
 				toastMessage: '请输入用户名',
 			})
-		} else {
-			const { dispatch } = this.props.navigation
-			const action = NavigationActions.navigate({
-				routeName: 'Index',
-				params: {}
+		} else if (this.state.password == '') {
+			this.setState({
+				toast: true,
+				toastMessage: '请输入密码',
 			})
-
-			dispatch(action)
+		} else {
+			try {
+				const res = await this.props.$user.fetchLogin({
+					username: this.state.username,
+					password: this.state.password,
+				})
+				console.log(res)
+			} catch(e) {
+				console.log(e)
+			}
 		}
 	}
 
 	usernameChange = val => {
 		this.setState({
 			username: val
+		})
+	}
+
+	passwordChange = val => {
+		this.setState({
+			password: val
 		})
 	}
 
@@ -65,7 +83,11 @@ class Login extends Component {
 								placeholder="请输入用户名" />
 						</View>
 						<View style={style.inputItem}>
-							<TextInput style={style.input} placeholder="请输入密码" />
+							<TextInput
+								value={this.state.password}
+								style={style.input}
+								onChangeText={this.passwordChange}
+								placeholder="请输入密码" />
 						</View>
 					</View>
 
@@ -83,4 +105,4 @@ class Login extends Component {
 	}
 }
 
-export default Login
+export default connect(Login)
