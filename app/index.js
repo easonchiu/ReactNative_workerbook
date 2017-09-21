@@ -8,7 +8,6 @@ import Index from './views/index'
 import Login from './views/login'
 import HomePage from './views/homepage'
 
-
 const App = StackNavigator({
 	Index: {
 		screen: Index

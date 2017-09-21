@@ -12,7 +12,7 @@ const style = StyleSheet.create({
     header: {
         paddingTop: statusBarHeight,
         width: '100%',
-		height: px2pt(60) + statusBarHeight,
+		height: px2pt(50) + statusBarHeight,
         zIndex: px2pt(99),
         alignItems: 'center',
         justifyContent: 'center',
@@ -20,8 +20,8 @@ const style = StyleSheet.create({
         position: 'relative',
     },
     headerBack: {
-        width: px2pt(60),
-        height: px2pt(60),
+        width: px2pt(50),
+        height: px2pt(50),
         position: 'absolute',
         left: 0,
         bottom: 0,
@@ -32,11 +32,11 @@ const style = StyleSheet.create({
         height: px2pt(22),
         position: 'absolute',
         left: px2pt(15),
-        top: px2pt((60 - 22) / 2),
+        top: px2pt((50 - 22) / 2),
     },
     headerClose: {
-        width: px2pt(60),
-        height: px2pt(60),
+        width: px2pt(50),
+        height: px2pt(50),
         position: 'absolute',
         left: 0,
         bottom: 0,
@@ -47,12 +47,12 @@ const style = StyleSheet.create({
         height: px2pt(22),
         position: 'absolute',
         left: px2pt(18),
-        top: px2pt((60 - 22) / 2),
+        top: px2pt((50 - 22) / 2),
     },
     headerTitle: {
         fontSize: px2pt(16),
         fontWeight: 'bold',
-        color: '#7076EF'
+        color: '#fff'
     },
     headerShadow: {
         position: 'absolute',

@@ -7,38 +7,9 @@ import Layout from '../../auto/layout'
 import DailyItem from '../../components/dailyItem'
 
 class HomePage extends Component {
+
 	constructor(props) {
 		super(props)
-	}
-
-	renderGrid() {
-		return null
-		const list = []
-		for (let i = 0; i < 40; i++) {
-			list.push(i)
-		}
-		const size = ww / 40
-		return (
-			<View style={style.grid}>
-				{
-					list.map(res => (
-						<View key={res} style={[style.gridCol, {
-							width: size
-						}]}>
-							{
-								[1,2,3,4,5,6,7].map(res => (
-									<View key={res} style={[style.gridItem, {
-										width: size,
-										height: size,
-										backgroundColor: 'rgba(36,183,15,.7)'
-									}]} />
-								))
-							}
-						</View>
-					))
-				}
-			</View>
-		)
 	}
 
 	render() {
@@ -50,7 +21,7 @@ class HomePage extends Component {
 		return (
 			<Layout>
 
-				<Layout.Header hasShadow onBack={e => {}}>
+				<Layout.Header style={style.header} onBack={e => {}}>
 					<View style={style.title}>
 						<Text style={style.titleName}>Eason.Chiu</Text>
 						<Text style={style.titleGroup}>前端开发</Text>

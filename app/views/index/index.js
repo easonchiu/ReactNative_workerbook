@@ -1,7 +1,8 @@
 import style from './style'
 import React, { Component } from 'react'
-import { View, Text, ListView } from 'react-native'
+import { View, Text, ListView, StatusBar } from 'react-native'
 import { NavigationActions } from 'react-navigation'
+import { px2pt, ww, wh } from '../../utils/size'
 
 import Layout from '../../auto/layout'
 import DailyItem from '../../components/dailyItem'
@@ -9,17 +10,14 @@ import DailyItem from '../../components/dailyItem'
 class Index extends Component {
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			
+		}
 	}
 
 	itemClick = e => {
-		const { dispatch } = this.props.navigation
-		const action = NavigationActions.navigate({
-			routeName: 'HomePage',
-			mode: 'modal',
-			params: {}
-		})
-
-		dispatch(action)
+		this.props.navigation.navigate('HomePage')
 	}
 
 	render() {
@@ -30,8 +28,10 @@ class Index extends Component {
 
 		return (
 			<Layout>
+
+				<StatusBar barStyle="light-content" />
 				
-				<Layout.Header hasShadow title="全部" />
+				<Layout.Header style={style.header} title="全部" />
 
 				<Layout.Body style={style.body}>
 					
@@ -42,8 +42,6 @@ class Index extends Component {
 						renderRow={e => <DailyItem onUserPress={this.itemClick} />}/>
 					
 				</Layout.Body>
-
-				<Layout.Footer hasShadow />
 
 			</Layout>
 		)
