@@ -24,7 +24,7 @@ class Login extends Component {
 	componentDidMount() {
 	}
 
-	submit = e => {
+	submit = async e => {
 		if (this.state.username == '') {
 			this.setState({
 				toast: true,
@@ -36,17 +36,17 @@ class Login extends Component {
 				toastMessage: '请输入密码',
 			})
 		} else {
-			this.props.onLoginSuccess && this.props.onLoginSuccess()
-			// return
-			// try {
-			// 	const res = await this.props.$user.fetchLogin({
-			// 		username: this.state.username,
-			// 		password: this.state.password,
-			// 	})
-			// 	console.log(res)
-			// } catch(e) {
-			// 	console.log(e)
-			// }
+			try {
+				const res = await this.props.$user.fetchLogin({
+					username: this.state.username,
+					password: this.state.password,
+				})
+				console.log(res)
+
+				// this.props.onLoginSuccess && this.props.onLoginSuccess()
+			} catch(e) {
+				console.log(e)
+			}
 		}
 	}
 
