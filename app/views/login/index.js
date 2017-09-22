@@ -1,9 +1,9 @@
 import style from './style'
 import React, { Component } from 'react'
-import { NavigationActions } from 'react-navigation'
-import connect from '../../store/connect'
-
 import { View, Text, Image, TextInput } from 'react-native'
+
+import User from '../../utils/user'
+import connect from '../../store/connect'
 
 import Layout from '../../auto/layout'
 import Button from '../../auto/button'
@@ -21,9 +21,6 @@ class Login extends Component {
 		}
 	}
 
-	componentDidMount() {
-	}
-
 	submit = async e => {
 		if (this.state.username == '') {
 			this.setState({
@@ -37,10 +34,11 @@ class Login extends Component {
 			})
 		} else {
 			try {
-				await this.props.$user.fetchLogin({
+				const res = await this.props.$user.login({
 					username: this.state.username,
 					password: this.state.password,
 				})
+				User.save(res)
 				this.props.onLoginSuccess && this.props.onLoginSuccess()
 			} catch(e) {
 				console.log(e)

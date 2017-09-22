@@ -3,14 +3,12 @@ import { px2pt, pt1 } from '../../utils/size'
 
 const style = StyleSheet.create({
 	header: {
-		backgroundColor: '#7076ef'
+		
 	},
 	body: {
 		padding: 0,
-		backgroundColor: '#7076ef'
 	},
 	footer: {
-		backgroundColor:'#7076ef',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -19,6 +17,14 @@ const style = StyleSheet.create({
 		height: px2pt(44),
 		borderRadius: px2pt(22),
 		overflow: 'hidden'
+	},
+	listHeader: {
+		width: '100%',
+		height: px2pt(6),
+	},
+	listFooter: {
+		width: '100%',
+		height: px2pt(4),
 	}
 })
 

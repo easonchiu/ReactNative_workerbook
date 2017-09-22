@@ -7,56 +7,54 @@ class DailyItem extends Component {
 		super(props)
 	}
 
+	componentWillUnmount() {
+		console.log(1)
+	}
+
 	render() {
+		const data = this.props.source
+
+		if (!data) {
+			return null
+		}
+
 		return (
-			<View style={style.wrapper} onPress={this.props.onPress}>
-				{
-					this.props.owner ?
-					<View style={style.info}>
-						<Text style={style.mydate}>更新于 22:31:32</Text>
-					</View> :
-					<View style={style.info}>
-						<TouchableOpacity
-							onPress={this.props.onUserPress}
-							activeOpacity={0.8}
-							style={style.header}>
-							<Text style={style.headerName}>志达</Text>
-						</TouchableOpacity>
-						<TouchableOpacity
-							onPress={this.props.onUserPress}
-							activeOpacity={0.8}
-							style={style.infoBd}>
-							<Text style={style.name}>Eason.Chiu</Text>
-							<Text style={style.group}>前端开发组</Text>
-						</TouchableOpacity>
-						<Text style={style.date}>更新于 22:31:32</Text>
-					</View>
-				}
-				<View style={style.record}>
-					<Text style={style.recordText}>APP首页日志解析</Text>
-					<Text style={style.progress}>30%</Text>
-					<View style={style.progressBar}>
-						<View style={[style.progressBarContent, {
-							width: '30%'
-						}]} />
-					</View>
-				</View>
-				<View style={style.record}>
-					<Text style={style.recordText}>APP首页日志解析</Text>
-					<Text style={style.progress}>75%</Text>
-					<View style={style.progressBar}>
-						<View style={[style.progressBarContent, {
-							width: '75%'
-						}]} />
-					</View>
-				</View>
-				<View style={style.record}>
-					<Text style={style.recordText}>APP首页日志解析</Text>
-					<Text style={style.progress}>已完成</Text>
-					<View style={style.progressBar}>
-						<View style={[style.progressBarContent, {
-							width: '100%'
-						}]} />
+			<View style={style.wrapper}>
+				<View style={style.border}>
+					{
+						this.props.owner ?
+						<View style={style.info}>
+							<Text style={style.mydate}>{data.updateTime}</Text>
+						</View> :
+						<View style={style.info}>
+							<TouchableOpacity
+								onPress={this.props.onUserPress}
+								activeOpacity={0.8}
+								style={style.header}>
+								<Text style={style.headerName}>{data.uid.nickname}</Text>
+							</TouchableOpacity>
+							<TouchableOpacity
+								onPress={this.props.onUserPress}
+								activeOpacity={0.8}
+								style={style.infoBd}>
+								<Text style={style.name}>{data.uid.nickname}</Text>
+								<Text style={style.group}>xxxx组</Text>
+							</TouchableOpacity>
+							<Text style={style.date}>{data.updateTime}</Text>
+						</View>
+					}
+					<View style={style.records}>
+					{
+						data.dailyList.map(res => (
+							<View key={res._id} style={style.record}>
+								<View style={[style.progressBar, {
+									width: res.progress + '%'
+								}]} />
+								<Text style={style.recordText}>{res.record}</Text>
+								<Text style={style.progress}>{res.progress}%</Text>
+							</View>
+						))
+					}
 					</View>
 				</View>
 			</View>

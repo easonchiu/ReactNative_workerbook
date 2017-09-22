@@ -3,12 +3,23 @@ import { px2pt, pt1 } from '../../utils/size'
 
 const style = StyleSheet.create({
 	wrapper: {
-		borderBottomWidth: pt1,
-		backgroundColor: '#fff',
-		borderBottomColor: 'rgb(240,240,240)',
-		marginBottom: px2pt(10),
-		borderRadius: px2pt(4),
+		padding: px2pt(10),
+		paddingTop: px2pt(4),
+		paddingBottom: px2pt(6),
 		overflow: 'hidden',
+	},
+	border: {
+		backgroundColor: '#fff',
+		borderRadius: px2pt(4),
+		borderWidth: pt1,
+		borderColor: '#dee3e8',
+		padding: pt1,
+		shadowColor: '#000',
+		shadowOpacity: 0.03,
+		shadowOffset: {
+			width: 0,
+			height: px2pt(1),
+		}
 	},
 	info: {
 		flexDirection: 'row',
@@ -57,36 +68,35 @@ const style = StyleSheet.create({
 		lineHeight: px2pt(13 * 1.5),
 		position: 'relative',
 		zIndex: 2,
-		backgroundColor: 'transparent',
 	},
 	progressBar: {
 		position: 'absolute',
 		left: 0,
 		top: 0,
-		bottom: 0,
 		right: 0,
+		height: px2pt(2),
+		backgroundColor: '#e9eff8',
 	},
-	progressBarContent: {
-		backgroundColor: '#f0f4f9',
-		height: '100%',
-		width: '50%',
+	records: {
+		padding: px2pt(5),
+		paddingLeft: px2pt(15),
+		paddingRight: px2pt(15),
 	},
 	record: {
-		padding: px2pt(10),
 		backgroundColor: '#fff',
-		borderTopWidth: pt1,
-		borderTopColor: '#fff',
 		flexDirection: 'row',
 		position: 'relative',
+		overflow: 'hidden',
+		paddingTop: px2pt(10),
+		paddingBottom: px2pt(10),
 	},
 	recordText: {
 		flex: 1,
 		color: '#586069',
 		fontSize: px2pt(13),
 		lineHeight: px2pt(13 * 1.5),
-		position: 'relative',
-		zIndex: 2,
-		backgroundColor: 'transparent',
+		marginRight: px2pt(10),
+		textAlign: 'justify'
 	}
 })
 

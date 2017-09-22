@@ -1,9 +1,9 @@
 import style from './style'
 import React, { Component } from 'react'
-import { View, Text, ListView, StatusBar, Image, Modal } from 'react-native'
-import { NavigationActions } from 'react-navigation'
+import { View, Text, ListView, Image, Modal } from 'react-native'
+
+import User from '../../utils/user'
 import connect from '../../store/connect'
-import { px2pt, ww, wh } from '../../utils/size'
 
 import Layout from '../../auto/layout'
 import DailyItem from '../../components/dailyItem'
@@ -15,53 +15,80 @@ class Index extends Component {
 
 		this.state = {
 			animation: 'none',
-			loginVisible: true
+			loginVisible: false
 		}
 	}
 
 	componentDidMount() {
-		console.log(this.props)
+		if (User.info() != null) {
+			this.fetch()
+		}
 	}
 
 	itemClick = e => {
 		this.props.navigation.navigate('HomePage')
 	}
 
-	loginSuccess = e => {
-		console.log(this.props.$user.fetchInfo())
+	loginSuccess = async e => {
 		this.setState({
-			animation: 'slide'
-		}, e => {
-			this.setState({
-				loginVisible: false
-			})
+			loginVisible: false
 		})
+		this.fetch()
+	}
+
+	async fetch() {
+		try {
+			await User.asyncGet()
+			if (User.token == null) {
+				this.setState({
+					loginVisible: true
+				})
+				return false
+			}
+			await this.props.$daily.fetchList({
+				gid: 'all',
+				date: 1
+			})
+		} catch (e) {
+
+		}
 	}
 
 	render() {
+		const list = this.props.$$daily.list || []
+
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => true
 		})
-		const dataSource = ds.cloneWithRows([0])
+
+		let dataSource
+
+		if (list.length > 0) {
+			dataSource = ds.cloneWithRows(list)
+		}
 
 		return (
 			<Layout>
 
-				<StatusBar barStyle="light-content" />
-				
-				<Layout.Header style={style.header} title="全部" />
+				<Layout.Header hasShadow style={style.header} title="全部" />
 
 				<Layout.Body style={style.body}>
 					
-					<ListView
-						style={{padding: 10}}
-						initialListSize={10}
-						dataSource={dataSource}
-						renderRow={e => <DailyItem onUserPress={this.itemClick} />}/>
+					{
+						dataSource ?
+						<ListView
+							removeClippedSubviews={true}
+							initialListSize={10}
+							dataSource={dataSource}
+							renderHeader={e => <View style={style.listHeader} />}
+							renderFooter={e => <View style={style.listFooter} />}
+							renderRow={e => <DailyItem source={e} onUserPress={this.itemClick} />}/> :
+						null
+					}
 					
 				</Layout.Body>
 
-				<Layout.Footer style={style.footer}>
+				<Layout.Footer hasShadow style={style.footer}>
 					<Image style={style.footerAdd} source={{uri: 'icon-footer-add'}} />
 				</Layout.Footer>
 

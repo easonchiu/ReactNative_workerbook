@@ -52,7 +52,7 @@ const style = StyleSheet.create({
     headerTitle: {
         fontSize: px2pt(16),
         fontWeight: 'bold',
-        color: '#fff'
+        color: '#586069'
     },
     headerShadow: {
         position: 'absolute',
@@ -64,7 +64,7 @@ const style = StyleSheet.create({
     body: {
 		flex: 1,
         padding: px2pt(20),
-        backgroundColor: '#fff',
+        backgroundColor: '#f7f9fc',
     },
     scrollBody: {
         flex: 1,
