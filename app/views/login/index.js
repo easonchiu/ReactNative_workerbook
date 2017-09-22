@@ -37,13 +37,11 @@ class Login extends Component {
 			})
 		} else {
 			try {
-				const res = await this.props.$user.fetchLogin({
+				await this.props.$user.fetchLogin({
 					username: this.state.username,
 					password: this.state.password,
 				})
-				console.log(res)
-
-				// this.props.onLoginSuccess && this.props.onLoginSuccess()
+				this.props.onLoginSuccess && this.props.onLoginSuccess()
 			} catch(e) {
 				console.log(e)
 			}

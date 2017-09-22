@@ -12,9 +12,17 @@ const fetchLogin = payload => async (dispatch, getState) => {
         	...payload
         }
 	})
+	dispatch(_fetchLogin(res.data.data))
 	return res
+}
+
+// 用户信息
+const fetchInfo = payload => async (dispatch, getState) => {
+	const data = getState()
+	return data.info
 }
 
 export default {
 	fetchLogin,
+	fetchInfo,
 }

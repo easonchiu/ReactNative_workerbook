@@ -2,6 +2,7 @@ import style from './style'
 import React, { Component } from 'react'
 import { View, Text, ListView, StatusBar, Image, Modal } from 'react-native'
 import { NavigationActions } from 'react-navigation'
+import connect from '../../store/connect'
 import { px2pt, ww, wh } from '../../utils/size'
 
 import Layout from '../../auto/layout'
@@ -18,11 +19,16 @@ class Index extends Component {
 		}
 	}
 
+	componentDidMount() {
+		console.log(this.props)
+	}
+
 	itemClick = e => {
 		this.props.navigation.navigate('HomePage')
 	}
 
 	loginSuccess = e => {
+		console.log(this.props.$user.fetchInfo())
 		this.setState({
 			animation: 'slide'
 		}, e => {
@@ -70,4 +76,4 @@ class Index extends Component {
 	}
 }
 
-export default Index
+export default connect(Index)
