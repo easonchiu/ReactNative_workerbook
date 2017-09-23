@@ -10,6 +10,13 @@ import DailyItem from '../../components/dailyItem'
 class HomePage extends Component {
 	constructor(props) {
 		super(props)
+
+		const params = props.navigation.state.params
+
+		this.state = {
+			name: params.uid.nickname,
+			group: '前端开发'
+		}
 	}
 
 	componentDidMount() {
@@ -17,10 +24,6 @@ class HomePage extends Component {
 		if (params.uid && params.uid._id) {
 			this.fetch(params.uid._id)
 		}
-	}
-
-	componentWillUnmount() {
-		
 	}
 
 	async fetch(uid) {
@@ -55,8 +58,8 @@ class HomePage extends Component {
 
 				<Layout.Header hasShadow style={style.header} onBack={this.onBackClick}>
 					<View style={style.title}>
-						<Text style={style.titleName}>Eason.Chiu</Text>
-						<Text style={style.titleGroup}>前端开发</Text>
+						<Text style={style.titleName}>{this.state.name}</Text>
+						<Text style={style.titleGroup}>{this.state.group}</Text>
 					</View>
 				</Layout.Header>
 

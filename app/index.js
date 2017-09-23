@@ -1,7 +1,7 @@
 import './utils/dateFormat'
 
 import React, { Component } from 'react'
-import { Easing, Animated, Text, View } from 'react-native'
+import { Easing, Animated, Text, View, Navigator } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
 import createConfStore from './store/conf'
@@ -23,17 +23,8 @@ const App = StackNavigator({
 	initialRouteName: 'Index',
 	cardStyle: {
 		shadowColor: '#000',
-		shadowOpacity: 0.01,
-	},
-	transitionConfig: e => {
-		return {
-	        transitionSpec: {
-				duration: 600,
-				easing: Easing.bezier(0.86, 0, 0.07, 1),
-				timing: Animated.timing,
-			}
-    	}
-    }
+		shadowOpacity: 0,
+	}
 })
 
 const store = createConfStore()
@@ -74,3 +65,4 @@ class ConfigApp extends Component {
 }
 
 export default ConfigApp
+

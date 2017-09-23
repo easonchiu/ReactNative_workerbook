@@ -12,16 +12,15 @@ const style = StyleSheet.create({
 		alignItems: 'center'
 	},
 	titleName: {
-		fontSize: px2pt(16),
+		fontSize: px2pt(14),
         fontWeight: 'bold',
         color: '#586069',
         height: px2pt(20),
-        marginBottom: px2pt(3),
 	},
 	titleGroup: {
-		fontSize: px2pt(13),
+		fontSize: px2pt(12),
         color: '#a8b0b9',
-        height: px2pt(20),
+        height: px2pt(14),
 	},
 	listHeader: {
 		width: '100%',
