@@ -1,15 +1,36 @@
 import style from './style'
 import React, { Component } from 'react'
 import { View, Text, ListView } from 'react-native'
-import { ww } from '../../utils/size'
+
+import connect from '../../store/connect'
 
 import Layout from '../../auto/layout'
 import DailyItem from '../../components/dailyItem'
 
 class HomePage extends Component {
-
 	constructor(props) {
 		super(props)
+	}
+
+	componentDidMount() {
+		const params = this.props.navigation.state.params
+		if (params.uid && params.uid._id) {
+			this.fetch(params.uid._id)
+		}
+	}
+
+	componentWillUnmount() {
+		
+	}
+
+	async fetch(uid) {
+		try {
+			await this.props.$daily.fetchListWithUser({
+				uid
+			})
+		} catch (e) {
+
+		}
 	}
 
 	onBackClick = e => {
@@ -17,15 +38,22 @@ class HomePage extends Component {
 	}
 
 	render() {
+		const list = this.props.$$daily.listWithUser || []
+
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => true
 		})
-		const dataSource = ds.cloneWithRows([1,2,3,4,5,6,7,8,9,0])
+
+		let dataSource
+
+		if (list.length > 0) {
+			dataSource = ds.cloneWithRows(list)
+		}
 
 		return (
 			<Layout>
 
-				<Layout.Header style={style.header} onBack={this.onBackClick}>
+				<Layout.Header hasShadow style={style.header} onBack={this.onBackClick}>
 					<View style={style.title}>
 						<Text style={style.titleName}>Eason.Chiu</Text>
 						<Text style={style.titleGroup}>前端开发</Text>
@@ -33,12 +61,18 @@ class HomePage extends Component {
 				</Layout.Header>
 
 				<Layout.Body style={style.wrapper}>
-
-					<ListView
-						style={{padding: 10}}
-						initialListSize={10}
-						dataSource={dataSource}
-						renderRow={e => <DailyItem owner onPress={this.itemClick} />}/>
+					
+					{
+						dataSource ?
+						<ListView
+							removeClippedSubviews={true}
+							initialListSize={10}
+							dataSource={dataSource}
+							renderHeader={e => <View style={style.listHeader} />}
+							renderFooter={e => <View style={style.listFooter} />}
+							renderRow={e => <DailyItem source={e} owner onPress={this.itemClick} />}/> :
+						null
+					}
 
 				</Layout.Body>
 				
@@ -47,4 +81,4 @@ class HomePage extends Component {
 	}
 }
 
-export default HomePage
+export default connect(HomePage)

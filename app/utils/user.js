@@ -5,20 +5,6 @@ class User {
 	static role = ''
 	static token = ''
 
-	static info() {
-		const token = AsyncStorage.getItem('token')
-		const role = AsyncStorage.getItem('role')
-
-		if (token && role) {
-			return {
-				token,
-				role,
-			}
-		}
-
-		return null
-	}
-
 	static save(data) {
 		this.role = data.role.toString()
 		this.token = data.token

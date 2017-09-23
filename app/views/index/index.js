@@ -15,18 +15,19 @@ class Index extends Component {
 
 		this.state = {
 			animation: 'none',
-			loginVisible: false
+			loginVisible: !User.token
 		}
 	}
 
 	componentDidMount() {
-		if (User.info() != null) {
+		if (User.token) {
 			this.fetch()
 		}
 	}
 
 	itemClick = e => {
-		this.props.navigation.navigate('HomePage')
+		this.props.$daily.clearListWithUser()
+		this.props.navigation.navigate('HomePage', e)
 	}
 
 	loginSuccess = async e => {
@@ -38,7 +39,6 @@ class Index extends Component {
 
 	async fetch() {
 		try {
-			await User.asyncGet()
 			if (User.token == null) {
 				this.setState({
 					loginVisible: true
@@ -82,7 +82,7 @@ class Index extends Component {
 							dataSource={dataSource}
 							renderHeader={e => <View style={style.listHeader} />}
 							renderFooter={e => <View style={style.listFooter} />}
-							renderRow={e => <DailyItem source={e} onUserPress={this.itemClick} />}/> :
+							renderRow={e => <DailyItem source={e} onUserPress={this.itemClick.bind(this, e)} />}/> :
 						null
 					}
 					

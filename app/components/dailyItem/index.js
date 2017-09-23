@@ -7,12 +7,10 @@ class DailyItem extends Component {
 		super(props)
 	}
 
-	componentWillUnmount() {
-		console.log(1)
-	}
-
 	render() {
 		const data = this.props.source
+
+		console.log(data)
 
 		if (!data) {
 			return null

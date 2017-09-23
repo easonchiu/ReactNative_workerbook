@@ -78,9 +78,9 @@ const style = StyleSheet.create({
 		backgroundColor: '#e9eff8',
 	},
 	records: {
-		padding: px2pt(5),
 		paddingLeft: px2pt(15),
 		paddingRight: px2pt(15),
+		paddingBottom: px2pt(5),
 	},
 	record: {
 		backgroundColor: '#fff',
