@@ -1,3 +1,5 @@
+import './utils/dateFormat'
+
 import React, { Component } from 'react'
 import { Easing, Animated, Text, View } from 'react-native'
 import { StackNavigator } from 'react-navigation'

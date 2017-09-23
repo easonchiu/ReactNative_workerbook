@@ -11,9 +11,6 @@ const style = StyleSheet.create({
 	border: {
 		backgroundColor: '#fff',
 		borderRadius: px2pt(4),
-		borderWidth: pt1,
-		borderColor: '#dee3e8',
-		padding: pt1,
 		shadowColor: '#000',
 		shadowOpacity: 0.03,
 		shadowOffset: {
@@ -75,7 +72,10 @@ const style = StyleSheet.create({
 		top: 0,
 		right: 0,
 		height: px2pt(2),
-		backgroundColor: '#e9eff8',
+		backgroundColor: '#e8e9f9',
+		opacity: 0.5,
+		resizeMode: 'cover',
+		borderRadius: px2pt(1)
 	},
 	records: {
 		paddingLeft: px2pt(15),
