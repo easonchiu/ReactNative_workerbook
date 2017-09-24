@@ -63,15 +63,18 @@ const style = StyleSheet.create({
     },
     body: {
 		flex: 1,
-        padding: px2pt(20),
         backgroundColor: '#f7f9fc',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        position: 'relative'
     },
-    scrollBody: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    scrollContainer: {
-        padding: px2pt(20),
+    loading: {
+        position: 'absolute',
+        left: '50%',
+        top: 50,
+        zIndex: 99,
+        marginLeft: px2pt(-15),
     },
     footer: {
 		height: px2pt(60),

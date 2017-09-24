@@ -2,7 +2,7 @@ import './utils/dateFormat'
 
 import React, { Component } from 'react'
 import { Easing, Animated, Text, View, Navigator } from 'react-native'
-import { StackNavigator } from 'react-navigation'
+import { StackNavigator } from './utils/react-navigation'
 import { Provider } from 'react-redux'
 import createConfStore from './store/conf'
 
@@ -23,7 +23,7 @@ const App = StackNavigator({
 	initialRouteName: 'Index',
 	cardStyle: {
 		shadowColor: '#000',
-		shadowOpacity: 0,
+		shadowOpacity: 0.1,
 	}
 })
 

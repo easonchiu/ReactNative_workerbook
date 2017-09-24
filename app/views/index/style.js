@@ -8,6 +8,9 @@ const style = StyleSheet.create({
 	body: {
 		padding: 0,
 	},
+	list: {
+		width: '100%'
+	},
 	footer: {
 		alignItems: 'center',
 		justifyContent: 'center'

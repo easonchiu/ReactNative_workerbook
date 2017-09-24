@@ -1,6 +1,6 @@
 import style, { hover } from './style'
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, Text } from 'react-native'
 
 
 class Btn extends Component {

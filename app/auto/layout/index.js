@@ -1,6 +1,8 @@
 import style from './style'
 import React, { Component } from 'react'
-import { View, Text, Image, TouchableOpacity, ScrollView, Animated } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Animated, Modal } from 'react-native'
+
+import Spin from '../spin'
 
 const Layout = (props) => {
 	return (
@@ -64,21 +66,13 @@ const LayoutHeader = (props) => {
 }
 
 const LayoutBody = (props) => {
-	if (props.scrollabled) {
-		return (
-			<ScrollView
-				{...props}
-				scrollEventThrottle={8}
-				removeClippedSubviews={true}
-				style={[style.scrollBody, props.scrollStyle]}
-				contentContainerStyle={[style.scrollContainer, props.style]}>
-				{props.children}
-			</ScrollView>
-		)
-	}
 	return (
 		<View {...props} style={[style.body, props.style]}>
-			{props.children}
+			{
+				props.loading ?
+				<Spin style={style.loading} /> :
+				props.children
+			}
 		</View>
 	)
 }

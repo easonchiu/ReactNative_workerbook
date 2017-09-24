@@ -67,7 +67,6 @@ class Login extends Component {
 	render() {
 		return (
 			<Layout>
-				
 				<Layout.Body style={style.body}>
 
 					<Image style={style.logo} source={{uri: 'logo'}} />

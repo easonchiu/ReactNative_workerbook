@@ -15,8 +15,11 @@ class Index extends Component {
 
 		this.state = {
 			animation: 'none',
-			loginVisible: !User.token
+			loginVisible: !User.token,
+			loading: true
 		}
+
+		console.log(props.navigation)
 	}
 
 	componentDidMount() {
@@ -26,7 +29,6 @@ class Index extends Component {
 	}
 
 	itemClick = e => {
-		this.props.$daily.clearListWithUser()
 		this.props.navigation.navigate('HomePage', e)
 	}
 
@@ -47,7 +49,10 @@ class Index extends Component {
 			}
 			await this.props.$daily.fetchList({
 				gid: 'all',
-				date: 1
+				date: 2
+			})
+			this.setState({
+				loading: false
 			})
 		} catch (e) {
 
@@ -72,13 +77,14 @@ class Index extends Component {
 
 				<Layout.Header hasShadow style={style.header} title="全部" />
 
-				<Layout.Body style={style.body}>
+				<Layout.Body style={style.body} loading={this.state.loading}>
 					
 					{
 						dataSource ?
 						<ListView
+							style={style.list}
 							removeClippedSubviews={true}
-							initialListSize={10}
+							initialListSize={5}
 							dataSource={dataSource}
 							renderHeader={e => <View style={style.listHeader} />}
 							renderFooter={e => <View style={style.listFooter} />}

@@ -5,8 +5,8 @@ const style = StyleSheet.create({
 	wrapper: {
 		padding: 0,
 	},
-	header: {
-		
+	list: {
+		width: '100%'
 	},
 	title: {
 		alignItems: 'center'

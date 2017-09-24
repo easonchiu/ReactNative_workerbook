@@ -15,20 +15,27 @@ class HomePage extends Component {
 
 		this.state = {
 			name: params.uid.nickname,
-			group: '前端开发'
+			group: '前端开发',
 		}
 	}
 
 	componentDidMount() {
 		const params = this.props.navigation.state.params
+		this.props.$daily.clearListWithUser()
 		if (params.uid && params.uid._id) {
-			this.fetch(params.uid._id)
+			this.timer = setTimeout(e => {
+				this.fetch(params.uid._id)	
+			}, 1000)
 		}
+	}
+
+	componentWillUnmount() {
+		clearTimeout(this.timer)
 	}
 
 	async fetch(uid) {
 		try {
-			await this.props.$daily.fetchListWithUser({
+			this.props.$daily.fetchListWithUser({
 				uid
 			})
 		} catch (e) {
@@ -44,7 +51,7 @@ class HomePage extends Component {
 		const list = this.props.$$daily.listWithUser || []
 
 		const ds = new ListView.DataSource({
-			rowHasChanged: (r1, r2) => true
+			rowHasChanged: (r1, r2) => false
 		})
 
 		let dataSource
@@ -63,13 +70,14 @@ class HomePage extends Component {
 					</View>
 				</Layout.Header>
 
-				<Layout.Body style={style.wrapper}>
+				<Layout.Body style={style.wrapper} loading={!dataSource}>
 					
 					{
 						dataSource ?
 						<ListView
+							style={style.list}
 							removeClippedSubviews={true}
-							initialListSize={10}
+							initialListSize={5}
 							dataSource={dataSource}
 							renderHeader={e => <View style={style.listHeader} />}
 							renderFooter={e => <View style={style.listFooter} />}
