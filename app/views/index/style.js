@@ -19,10 +19,23 @@ const style = StyleSheet.create({
 		flex: 1,
 		textAlign: 'center',
 		fontSize: px2pt(13),
-		color: '#a8b0b9'
+		color: '#a8b0b9',
 	},
 	tabSelectItem: {
 		flex: 1.5,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	tabIcon: {
+		width: px2pt(14),
+		height: px2pt(14),
+		marginTop: px2pt(-2.8),
+		marginRight: px2pt(5)
+	},
+	tabDateItem: {
+		flex: 0,
+		width: 'auto'
 	},
 	tabActiveItem: {
 		color: '#6469e7',
@@ -33,7 +46,7 @@ const style = StyleSheet.create({
 		height: px2pt(3),
 		backgroundColor: '#6469e7',
 		position: 'absolute',
-		left: px2pt(24),
+		left: 0,
 		bottom: 0,
 		zIndex: 9
 	},
@@ -44,12 +57,30 @@ const style = StyleSheet.create({
 		width: '100%'
 	},
 	footer: {
+		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center'
+	},
+	footerItem: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	footerHome: {
+		width: px2pt(34),
+		height: px2pt(34),
+		borderRadius: px2pt(22),
+		overflow: 'hidden'
 	},
 	footerAdd: {
 		width: px2pt(44),
 		height: px2pt(44),
+		borderRadius: px2pt(22),
+		overflow: 'hidden'
+	},
+	footerMine: {
+		width: px2pt(34),
+		height: px2pt(34),
 		borderRadius: px2pt(22),
 		overflow: 'hidden'
 	},

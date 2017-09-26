@@ -1,6 +1,7 @@
 import style from './style'
 import React, { Component } from 'react'
-import { View, Text, ListView, Image, Modal } from 'react-native'
+import { View, Text, ListView, Image, Modal, TouchableOpacity } from 'react-native'
+import { ww, px2pt } from '../../utils/size'
 
 import User from '../../utils/user'
 import connect from '../../store/connect'
@@ -16,10 +17,9 @@ class Index extends Component {
 		this.state = {
 			animation: 'none',
 			loginVisible: !User.token,
-			loading: true
+			loading: true,
+			dateActive: 0
 		}
-
-		console.log(props.navigation)
 	}
 
 	componentDidMount() {
@@ -60,6 +60,15 @@ class Index extends Component {
 	}
 
 	render() {
+
+		let lineX = ww * 0.8 / 4.5 * this.state.dateActive
+		const itemW = ww * 0.8 / 4.5 // 每个菜单的宽度，注意最后一个是1.5倍宽
+		if (this.state.dateActive < 3) {
+			lineX += (itemW - 20) / 2
+		} else {
+			lineX += (itemW * 1.5 - 20) / 2
+		}
+
 		const list = this.props.$$daily.list || []
 
 		const ds = new ListView.DataSource({
@@ -77,11 +86,18 @@ class Index extends Component {
 
 				<Layout.Header hasShadow style={style.header} title="全部">
 					<View style={style.tab}>
-						<View style={style.tabLine} />
+						<View style={[style.tabLine, {
+							transform: [{
+								translateX: lineX
+							}]
+						}]} />
 						<Text style={[style.tabItem, style.tabActiveItem]}>今天</Text>
 						<Text style={style.tabItem}>昨天</Text>
 						<Text style={style.tabItem}>前天</Text>
-						<Text style={[style.tabItem, style.tabSelectItem]}>2017-3-22</Text>
+						<View style={style.tabSelectItem}>
+							<Image source={{uri: 'icon-date'}} style={style.tabIcon} />
+							<Text style={[style.tabItem, style.tabDateItem]}>选择日期</Text>
+						</View>
 					</View>
 				</Layout.Header>
 
@@ -103,7 +119,21 @@ class Index extends Component {
 				</Layout.Body>
 
 				<Layout.Footer hasShadow style={style.footer}>
-					<Image style={style.footerAdd} source={{uri: 'icon-footer-add'}} />
+					<TouchableOpacity activeOpacity={0.7} style={style.footerItem}>
+						<Image
+							style={style.footerHome}
+							source={{uri: 'icon-footer-home'}} />
+					</TouchableOpacity>
+					<TouchableOpacity activeOpacity={0.7} style={style.footerItem}>
+						<Image
+							style={style.footerAdd}
+							source={{uri: 'icon-footer-add'}} />
+					</TouchableOpacity>
+					<TouchableOpacity activeOpacity={0.7} style={style.footerItem}>
+						<Image
+							style={style.footerMine}
+							source={{uri: 'icon-footer-mine'}} />
+					</TouchableOpacity>
 				</Layout.Footer>
 
 				<Modal

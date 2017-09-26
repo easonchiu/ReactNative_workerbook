@@ -96,7 +96,6 @@ class Login extends Component {
 						visible={this.state.toast} />
 
 				</Layout.Body>
-
 			</Layout>
 		)
 	}
