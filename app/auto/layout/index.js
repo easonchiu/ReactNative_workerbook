@@ -13,8 +13,15 @@ const Layout = (props) => {
 }
 
 const LayoutHeader = (props) => {
+	
+	let title = props.title
+	if (title && typeof title == 'string') {
+		title = <Text style={style.headerTitle}>{props.title}</Text>
+	}
+
 	return (
 		<View style={[style.header, props.style]}>
+			<View style={style.headerInner}>
 			{
 				props.onBack ?
 				<TouchableOpacity
@@ -40,10 +47,11 @@ const LayoutHeader = (props) => {
 				null
 			}
 			{
-				props.title ?
-				<Text style={style.headerTitle}>{props.title}</Text> :
+				title ?
+				title :
 				null
 			}
+			</View>
 			{
 				props.children
 			}

@@ -49,7 +49,7 @@ class Index extends Component {
 			}
 			await this.props.$daily.fetchList({
 				gid: 'all',
-				date: 2
+				date: 1
 			})
 			this.setState({
 				loading: false
@@ -75,7 +75,15 @@ class Index extends Component {
 		return (
 			<Layout>
 
-				<Layout.Header hasShadow style={style.header} title="全部" />
+				<Layout.Header hasShadow style={style.header} title="全部">
+					<View style={style.tab}>
+						<View style={style.tabLine} />
+						<Text style={[style.tabItem, style.tabActiveItem]}>今天</Text>
+						<Text style={style.tabItem}>昨天</Text>
+						<Text style={style.tabItem}>前天</Text>
+						<Text style={[style.tabItem, style.tabSelectItem]}>2017-3-22</Text>
+					</View>
+				</Layout.Header>
 
 				<Layout.Body style={style.body} loading={this.state.loading}>
 					

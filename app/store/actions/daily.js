@@ -9,7 +9,7 @@ const _fetchList = createAction('DAILY_FETCH_LIST')
 const fetchList = payload => async (dispatch, getState) => {
 	const res = await ajax.request({
 		method: 'get',
-        url: `/daily/list/${payload.gid}/${payload.date}`,
+        url: `/daily/list`,
         params: payload
 	})
 	dispatch(_fetchList(res.data.data.dailyList))

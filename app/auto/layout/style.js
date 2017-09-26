@@ -12,12 +12,18 @@ const style = StyleSheet.create({
     header: {
         paddingTop: statusBarHeight,
         width: '100%',
-		height: px2pt(50) + statusBarHeight,
+		minHeight: px2pt(50) + statusBarHeight,
         zIndex: px2pt(99),
-        alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: '#fff',
         position: 'relative',
+    },
+    headerInner: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        zIndex: px2pt(99),
+        height: px2pt(50),
     },
     headerBack: {
         width: px2pt(50),
@@ -77,7 +83,8 @@ const style = StyleSheet.create({
         marginLeft: px2pt(-15),
     },
     footer: {
-		height: px2pt(60),
+		height: px2pt(60+0),
+        paddingBottom: px2pt(0),
     },
     footerShadow: {
         position: 'absolute',

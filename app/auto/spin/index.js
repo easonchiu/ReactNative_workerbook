@@ -1,6 +1,6 @@
 import style from './style'
 import React, { Component } from 'react'
-import { View, Animated, Easing } from 'react-native'
+import { View, Animated, Easing, ActivityIndicator } from 'react-native'
 
 
 class Spin extends Component {
@@ -13,7 +13,7 @@ class Spin extends Component {
 
 	componentDidMount() {
 		this.running = true
-		this.run()
+		// this.run()
 	}
 
 	componentWillUnmount() {
@@ -36,6 +36,9 @@ class Spin extends Component {
 	}
 
 	render() {
+		
+		return <ActivityIndicator />
+
 		return (
 			<Animated.View
 			style={[

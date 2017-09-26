@@ -23,14 +23,8 @@ class HomePage extends Component {
 		const params = this.props.navigation.state.params
 		this.props.$daily.clearListWithUser()
 		if (params.uid && params.uid._id) {
-			this.timer = setTimeout(e => {
-				this.fetch(params.uid._id)	
-			}, 1000)
+			this.fetch(params.uid._id)
 		}
-	}
-
-	componentWillUnmount() {
-		clearTimeout(this.timer)
 	}
 
 	async fetch(uid) {
@@ -63,12 +57,16 @@ class HomePage extends Component {
 		return (
 			<Layout>
 
-				<Layout.Header hasShadow style={style.header} onBack={this.onBackClick}>
-					<View style={style.title}>
-						<Text style={style.titleName}>{this.state.name}</Text>
-						<Text style={style.titleGroup}>{this.state.group}</Text>
-					</View>
-				</Layout.Header>
+				<Layout.Header
+					hasShadow
+					style={style.header}
+					onBack={this.onBackClick}
+					title={
+						<View style={style.title}>
+							<Text style={style.titleName}>{this.state.name}</Text>
+							<Text style={style.titleGroup}>{this.state.group}</Text>
+						</View>
+					} />
 
 				<Layout.Body style={style.wrapper} loading={!dataSource}>
 					
