@@ -13,13 +13,8 @@ const style = StyleSheet.create({
         width: '80%'
 	},
 	tabItem: {
-		height: px2pt(35),
-		lineHeight: px2pt(30),
 		width: '100%',
 		flex: 1,
-		textAlign: 'center',
-		fontSize: px2pt(13),
-		color: '#a8b0b9',
 	},
 	tabSelectItem: {
 		flex: 1.5,
@@ -33,11 +28,18 @@ const style = StyleSheet.create({
 		marginTop: px2pt(-2.8),
 		marginRight: px2pt(5)
 	},
-	tabDateItem: {
+	tabItemText: {
+		height: px2pt(35),
+		lineHeight: px2pt(30),
+		textAlign: 'center',
+		fontSize: px2pt(13),
+		color: '#a8b0b9',
+	},
+	tabDateItemText: {
 		flex: 0,
 		width: 'auto'
 	},
-	tabActiveItem: {
+	tabActiveItemText: {
 		color: '#6469e7',
 		fontWeight: 'bold'
 	},
@@ -52,6 +54,10 @@ const style = StyleSheet.create({
 	},
 	body: {
 		padding: 0,
+	},
+	empty: {
+		color: '#a8b0b9',
+		fontSize: px2pt(13),
 	},
 	list: {
 		width: '100%'

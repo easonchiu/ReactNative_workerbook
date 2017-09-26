@@ -47,8 +47,8 @@ class DailyItem extends Component {
 			return null
 		}
 
-		const time = this.props.owner ?
-			new Date(data.updateTime).format('yyyy年M月d hh:mm:ss') :
+		const time = this.props.owner || this.props.showDay ?
+			new Date(data.updateTime).format('M月d hh:mm:ss') :
 			new Date(data.updateTime).format('hh:mm:ss')
 
 		// 处理头像name
